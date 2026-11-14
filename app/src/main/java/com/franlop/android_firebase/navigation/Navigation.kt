@@ -16,12 +16,15 @@ import com.franlop.android_firebase.screens.login.Login
 import com.franlop.android_firebase.utils.AuthManager
 import com.google.firebase.analytics.FirebaseAnalytics
 
+import androidx.compose.ui.platform.LocalContext
+
 @Composable
 fun Navigation(
     navController: NavHostController = rememberNavController(),
     analytics: FirebaseAnalytics? = null
 ) {
-    val authManager = remember { AuthManager() }
+    val context = LocalContext.current
+    val authManager = remember { AuthManager(context) }
     val currentUser = authManager.getCurrentUser()
     val startDestination = if (currentUser != null) Routes.Home.route else Routes.Login.route
 
