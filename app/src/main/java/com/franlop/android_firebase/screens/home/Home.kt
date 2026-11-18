@@ -7,6 +7,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -65,6 +66,17 @@ fun Home(
                     }
                 },
                 actions = {
+                    IconButton(onClick = {
+                        val crashlytics = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance()
+                        crashlytics.setCustomKey("usuarioEmail", user?.email ?: "anonimo")
+                        crashlytics.log("Error forzado desde Home")
+                        throw RuntimeException("Error forzado de prueba en HomeScreen para Crashlytics")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Warning,
+                            contentDescription = "Forzar Error"
+                        )
+                    }
                     IconButton(onClick = {
                         authManager.signOut()
                         navigateToLogin()

@@ -1,5 +1,6 @@
 plugins {
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
@@ -64,4 +65,5 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-crashlytics")
 }

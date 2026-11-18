@@ -223,6 +223,22 @@ fun Login(
             icon = R.drawable.ic_google,
             color = Color(0xFFF1F1F1)
         )
+
+        Spacer(modifier = Modifier.height(20.dp))
+        ClickableText(
+            text = AnnotatedString("Forzar error de Crashlytics"),
+            onClick = {
+                val crashlytics = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance()
+                crashlytics.setCustomKey("pruebaClave", "valor de prueba")
+                crashlytics.log("Mensaje de prueba forzado desde Login")
+                throw RuntimeException("Error forzado para probar Firebase Crashlytics")
+            },
+            style = TextStyle(
+                fontSize = 13.sp,
+                textDecoration = TextDecoration.Underline,
+                color = Color.Gray
+            )
+        )
     }
 }
 
