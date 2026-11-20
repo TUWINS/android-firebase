@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">android-firebase</string>
     <string name="default_web_client_id" translatable="false">654092091184-7s5rk7cc7tup58u0nfbfbmd6rcda9rk5.apps.googleusercontent.com</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>
